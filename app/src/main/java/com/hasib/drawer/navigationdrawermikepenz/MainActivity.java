@@ -12,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toolbar;
 
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
@@ -27,6 +29,7 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 public class MainActivity extends AppCompatActivity {
 
     android.support.v7.widget.Toolbar toolbar;
+    //boolean frStatus = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         onCreateDrawer();
+
+        //fillSpinner();
 
     }
 
@@ -71,7 +76,14 @@ public class MainActivity extends AppCompatActivity {
                                 Snackbar.make(view, "Home Drawer Item Clicked", Snackbar.LENGTH_LONG)
                                         .setAction("Action", null).show();
                                 Log.i("Error", "Case 1 Reached");
-                                selectFrag(1);
+
+                                Fragment fr1 = new fragmentone();
+                                FragmentManager manager = getFragmentManager();
+                                manager.beginTransaction().replace(R.id.fragment, fr1).commit();
+
+
+
+                                //selectFrag(1);
                                 //startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
                                 break;
@@ -83,7 +95,10 @@ public class MainActivity extends AppCompatActivity {
                                 Snackbar.make(view, "Settings Drawer Item Clicked", Snackbar.LENGTH_LONG)
                                         .setAction("Action", null).show();
                                 Log.i("Error", "Case 2 Reached");
-                                selectFrag(2);
+                                Fragment fr2 = new Fragmenttwo();
+                                FragmentManager manager = getFragmentManager();
+                                manager.beginTransaction().replace(R.id.fragment, fr2).commit();
+                                //selectFrag(2);
                                 //startActivity(new Intent(getApplicationContext(), anotherActivity.class));
                                 //setContentView();
                                 break;
@@ -95,23 +110,9 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .build();
     }
-    public void selectFrag(int i)
-    {
-        Fragment fr;
 
-        if(i == 1)
-        {
-            fr = new fragmentone();
 
-        }
-        else fr = new Fragmenttwo();
 
-        FragmentManager manager = getFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.fragment, fr);
-        transaction.commit();
-
-    }
 
     @Override
     protected void attachBaseContext(Context newBase) {

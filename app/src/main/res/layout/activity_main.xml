@@ -16,7 +16,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="56dp"
-        android:layout_below="@+id/toolbarMain"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:text="{gmd-bubble-chart} Chart"
         android:textColor="@android:color/black"
@@ -24,10 +24,10 @@
 
     <fragment
         android:id="@+id/fragment"
-        android:name="com.hasib.drawer.navigationdrawermikepenz.fragmentone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" />
+        android:name="com.hasib.drawer.navigationdrawermikepenz.Fragmenttwo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbarMain"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
