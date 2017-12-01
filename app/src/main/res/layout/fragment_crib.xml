@@ -1,0 +1,85 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hasib.drawer.navigationdrawermikepenz.cribFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="{faw_puzzle_piece} CSE Research and Innovation LAB (CRIB)"
+                android:layout_marginLeft="15dp"
+                android:textColor="#000"
+                android:textSize="18sp"/>
+
+            <WebView
+                android:id="@+id/webview1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp">
+            </WebView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="{faw_rocket} Centre for Cognitive Skill Enhancement (CCSE)"
+                android:layout_marginLeft="15dp"
+                android:textColor="#000"
+                android:textSize="18sp"/>
+
+            <WebView
+                android:id="@+id/webview2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp">
+            </WebView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="{faw_sitemap} NetworkLAB"
+                android:layout_marginLeft="15dp"
+                android:textColor="#000"
+                android:textSize="18sp"/>
+
+            <WebView
+                android:id="@+id/webview3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp">
+            </WebView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="{faw_wrench} Fabrication LAB (FABLAB)"
+                android:layout_marginLeft="15dp"
+                android:textColor="#000"
+                android:textSize="18sp"/>
+
+            <WebView
+                android:id="@+id/webview4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp">
+            </WebView>
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

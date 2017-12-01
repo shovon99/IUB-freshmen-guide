@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="73dp"
+        android:layout_marginTop="47dp"
         android:text="CGPA Calculator"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
@@ -24,14 +24,83 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:ems="10"
-        android:hint="Course ID"
-        android:inputType="textPersonName" />
+        android:hint="Enter Course ID"
+        android:inputType="textPersonName"
+        android:textSize="24sp" />
 
-    <Spinner
-        android:id="@+id/spinner"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_below="@+id/editText"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:text="Grade"
+            android:textColor="@color/material_drawer_dark_background"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@color/material_drawer_dark_background"
+            android:padding="10dp"
+            android:textColor="#000"></Spinner>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:text="No of Credits"
+            android:textColor="@color/material_drawer_dark_background"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/sp2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@color/material_drawer_dark_background"
+            android:padding="10dp"
+            android:textColor="#000"></Spinner>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/addCourse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Add Course" />
+
+    <TextView
+        android:id="@+id/cgpaShow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addCourse"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:text="Your CGPA: "
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
 </RelativeLayout>

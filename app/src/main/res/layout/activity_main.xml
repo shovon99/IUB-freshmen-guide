@@ -18,13 +18,13 @@
         android:layout_height="56dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="{gmd-bubble-chart} Chart"
+        android:text="{faw_keyboard_o} CSE Dept. Version"
         android:textColor="@android:color/black"
         android:textSize="16sp" />
 
     <fragment
         android:id="@+id/fragment"
-        android:name="com.hasib.drawer.navigationdrawermikepenz.Fragmenttwo"
+        android:name="com.hasib.drawer.navigationdrawermikepenz.Welcome"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbarMain"

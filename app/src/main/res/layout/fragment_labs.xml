@@ -1,0 +1,87 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hasib.drawer.navigationdrawermikepenz.LabsFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="{faw_bolt} CSC LAB 1, 2 and 3"
+                android:layout_marginLeft="15dp"
+                android:textColor="#000"
+                android:textSize="18sp"/>
+
+            <WebView
+                android:id="@+id/webview1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp">
+            </WebView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="{faw_coffee} General Purpose Lab (GPL)"
+                android:layout_marginLeft="15dp"
+                android:textColor="#000"
+                android:textSize="18sp"/>
+
+            <WebView
+                android:id="@+id/webview2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp">
+            </WebView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="{faw_desktop} Central Information and Technology Services (CITS)"
+                android:layout_marginLeft="15dp"
+                android:textColor="#000"
+                android:textSize="18sp"/>
+
+            <WebView
+                android:id="@+id/webview3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp">
+            </WebView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="{faw_lightbulb_o} CEN LAB"
+                android:layout_marginLeft="15dp"
+                android:textColor="#000"
+                android:textSize="18sp"/>
+
+            <WebView
+                android:id="@+id/webview4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp">
+            </WebView>
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>
