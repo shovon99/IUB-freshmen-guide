@@ -3,6 +3,9 @@ package com.hasib.drawer.navigationdrawermikepenz;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.database.Cursor;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.icu.text.DecimalFormat;
 import android.icu.text.NumberFormat;
 import android.os.Bundle;
@@ -19,15 +22,18 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mikepenz.fontawesome_typeface_library.FontAwesome;
+import com.mikepenz.iconics.IconicsDrawable;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class fragmentone extends Fragment {
 
 
-    double cgpa;
-    double gpa;
-    int cr;
+    double cgpa=0;
+    double gpa=0;
+    int cr=0;
     //int selectedIn = 0;
     View view;
 
@@ -37,16 +43,13 @@ public class fragmentone extends Fragment {
     public void CourseListShower()
     {
         AlertDialog.Builder builderSingle = new AlertDialog.Builder(getActivity());
-        builderSingle.setIcon(R.drawable.testsvg);
+        builderSingle.setIcon(new IconicsDrawable(getActivity().getApplicationContext())
+                .icon(FontAwesome.Icon.faw_briefcase)
+                .color(Color.RED));
         builderSingle.setTitle("Courses which you have already Added:");
 
 
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.select_dialog_singlechoice);
-//        arrayAdapter.add("Hardik");
-//        arrayAdapter.add("Archit");
-//        arrayAdapter.add("Jignesh");
-//        arrayAdapter.add("Umang");
-//        arrayAdapter.add("Gatti");
         for(Courses c: MainActivity.courses)
         {
             arrayAdapter.add(c.courseID);
@@ -103,7 +106,7 @@ public class fragmentone extends Fragment {
                             Log.i("Course Delete Error: ", e.toString());
                             Toast.makeText(getActivity().getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
                         }
-                        //cgpashow(view);
+
                         dialog.dismiss();
                     }
                 });
@@ -164,19 +167,15 @@ public class fragmentone extends Fragment {
         spinner2.setSelection(0);
 
 
-        final EditText editText = (EditText) view.findViewById(R.id.editText);
-        final TextView textView = (TextView) view.findViewById(R.id.cgpaShow);
+        final EditText editText = view.findViewById(R.id.editText);
 
-        //NumberFormat formatter = new DecimalFormat("#0.00");
-        //cgpashow(view);
 
-        Button viewCourse = (Button) view.findViewById(R.id.viewCourses);
+        Button viewCourse = view.findViewById(R.id.viewCourses);
 
         viewCourse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view2) {
                 CourseListShower();
-                //cgpashow(view);
             }
         });
 
@@ -190,7 +189,7 @@ public class fragmentone extends Fragment {
                     MainActivity.courses.clear();
                     MainActivity.mDatabase.execSQL("DELETE FROM courseList");
                     Toast.makeText(getActivity().getApplicationContext(), "All Courses have been Deleted ! ", Toast.LENGTH_SHORT).show();
-                    //cgpashow(view);
+
 
                 }catch (Exception e)
                 {
@@ -205,7 +204,8 @@ public class fragmentone extends Fragment {
         showCgpa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity().getApplicationContext(), "CGPA: " + String.format("%.4f", cgpashow())  , Toast.LENGTH_SHORT).show();
+                double cg = cgpashow();
+                Toast.makeText(getActivity().getApplicationContext(), "CGPA: " + String.format("%.4f", cg)  , Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -250,6 +250,10 @@ public class fragmentone extends Fragment {
     }
     public double cgpashow()
     {
+        cgpa = 0;
+        gpa=0;
+        cr=0;
+
         //TextView textView = view.findViewById(R.id.cgpaShow);
         for(Courses C : MainActivity.courses)
         {

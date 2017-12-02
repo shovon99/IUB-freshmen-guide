@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     //boolean frStatus = false;
     //Drawer result;
     //private static int SPLASH_TIME_OUT = 2000;
-    static ArrayList<Courses> courses = new ArrayList<>();
+    public static ArrayList<Courses> courses = new ArrayList<>();
     static SQLiteDatabase mDatabase;
 
     @Override
