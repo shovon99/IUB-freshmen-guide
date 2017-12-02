@@ -6,6 +6,8 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.annotation.LayoutRes;
@@ -30,23 +32,29 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     android.support.v7.widget.Toolbar  toolbar;
     //boolean frStatus = false;
     //Drawer result;
-    private static int SPLASH_TIME_OUT = 2000;
+    //private static int SPLASH_TIME_OUT = 2000;
+    static ArrayList<Courses> courses = new ArrayList<>();
+    static SQLiteDatabase mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         onCreateDrawer();
+        readOrCreateDatabase();
         //setContentView(R.layout.activity_main);
 
         //onCreateDrawer();
 
     }
+
 
 
     public void onCreateDrawer()
@@ -236,6 +244,66 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void readOrCreateDatabase()
+    {
+        try {
+            //this.deleteDatabase("Students");
+            mDatabase = this.openOrCreateDatabase("Courses", MODE_PRIVATE , null);
+
+            mDatabase.execSQL("CREATE TABLE IF NOT EXISTS courseList (courseID VARCHAR, credits INTEGER, grade VARCHAR)");
+
+
+            //mDatabase.execSQL("INSERT INTO courseList (courseID , credits , grade ) VALUES('CSE101', 3, 'A')");
+
+            Cursor cursor = mDatabase.rawQuery("SELECT * FROM courseList", null);
+
+            int courseIdIndex = cursor.getColumnIndex("courseID");
+            int creditIndex = cursor.getColumnIndex("credits");
+            int gradeIndex   = cursor.getColumnIndex("grade");
+
+
+            cursor.moveToFirst();
+            while (cursor != null)
+            {
+                Log.i("From Database: ", cursor.getString(courseIdIndex) + " " + cursor.getString(creditIndex)
+                + " " + cursor.getString(gradeIndex));
+
+                String courseid = cursor.getString(courseIdIndex);
+                int cr = Integer.parseInt(cursor.getString(creditIndex));
+                double gpa = gpaTranslator(cursor.getString(gradeIndex));
+                courses.add(new Courses(courseid,gpa, cr));
+
+                cursor.moveToNext();
+
+            }
+
+
+        }
+        catch (Exception e)
+        {
+            Log.i("Error", e.toString());
+            //
+            //
+            //
+        }
+
+    }
+
+    public double gpaTranslator(String gpa)
+    {
+        if(gpa.equals("A")) return 4.00;
+        if(gpa.equals("A-")) return 3.70;
+        if(gpa.equals("B+")) return 3.3;
+        if(gpa.equals("B")) return 3;
+        if(gpa.equals("B-")) return 2.7;
+        if(gpa.equals("C+")) return 2.3;
+        if(gpa.equals("C")) return 2;
+        if(gpa.equals("C-")) return 1.7;
+        if(gpa.equals("D+")) return 1.3;
+        if(gpa.equals("D")) return 1;
+        if(gpa.equals("P")) return 0;
+        else return 0;
+    }
 
 
 
